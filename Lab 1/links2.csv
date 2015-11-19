@@ -1,0 +1,17 @@
+from;to
+A;B
+A;C
+A;E
+B;D
+C;D
+D;F
+C;F
+F;E
+B;A
+C;A
+E;A
+D;B
+D;C
+F;D
+F;C
+F;E
