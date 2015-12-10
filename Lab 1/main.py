@@ -51,5 +51,5 @@ if __name__ == '__main__':
 
     nodes = parse_nodes(node_path)
     city_map = parse_links(link_path, nodes)
-    path = iterative_deepening_search(city_map,'Hagaby','Tybble')
+    path = iterative_deepening_search(city_map,'Brickebacken','Hagaby')
     print path
