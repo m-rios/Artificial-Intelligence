@@ -1,7 +1,7 @@
 from collections import namedtuple
 
 Course = namedtuple('Course', 'name, program, nStudents, type')
-Room = namedtuple('Room',"name, nSeats, projector, computer, equipment, level")
+Room = namedtuple('Room', "name, nSeats, projector, computer, equipment, level")
 
 
 def courseArray():
@@ -32,4 +32,3 @@ def roomArray():
         Room("T221", 20, True, False, False, 2),
         Room("T227", 70, True, False, False, 2)
     ]
-
