@@ -12,7 +12,7 @@ def parse_wine(path):
         num_row = []
         for i in range(len(row)):
             num_row.append(float(row[i]))
-        data_set.append(row)
+        data_set.append(num_row)
     f.close()
     return data_set
 
@@ -29,13 +29,15 @@ def rand_init_cluster(data_set, n_clusters):
 
 
 def mean(cluster):
-    mean = copy.copy(cluster[0])
+    mean = []
+    for x in range(len(cluster[0])):
+        mean.append(0)
 
     for i in range(1, len(cluster)):
         for j in range(len(cluster[i])):
-            mean[j] = mean[j] = cluster[i][j]
+            mean[j] = mean[j] + cluster[i][j]
     mean.pop(0)
-    result = [x/len(cluster) for x in mean]
+    result = [r/len(cluster) for r in mean]
 
     return result
 
@@ -52,8 +54,8 @@ def k_means_clustering(data_set, n_clusters):
     c_new = rand_init_cluster(data_set, n_clusters)
     #new dict
     c = {}
-    for i in range(n_clusters):
-        c_new[i] = []
+    # for i in range(n_clusters):
+    #     c[i] = []
 
     while not c == c_new:
 
@@ -65,7 +67,7 @@ def k_means_clustering(data_set, n_clusters):
         #get mean / cluster
         means = []
         for i in range(n_clusters):
-            means[i] = mean(c[i])
+            means.append(mean(c[i]))
 
         #Compute distance map
         distance_array = []
@@ -76,12 +78,12 @@ def k_means_clustering(data_set, n_clusters):
             distance_array.append(distance_row)
 
         #Re-arrange
-        for i in range(data_set):
+        for i in range(len(data_set)):
             column = []
             for j in range(n_clusters):
                 column.append(distance_array[j][i])
-            min = min(column)
-            index = column.index(min)
+            _min = min(column)
+            index = column.index(_min)
             c_new[index].append(data_set[i])
 
     return c
@@ -97,6 +99,7 @@ if __name__ == '__main__':
 
 
     c = k_means_clustering(data,3)
+
     print c[0]
     print c[1]
     print c[2]
