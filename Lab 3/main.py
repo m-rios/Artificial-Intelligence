@@ -91,13 +91,6 @@ def k_means_clustering(data_set, n_clusters):
 if __name__ == '__main__':
     data = parse_wine("wine.data")
 
-    # for i in range(len(data)):
-    #     line = ""
-    #     for j in range(len(data[0])):
-    #         line += data[i][j]+","
-    #     print line
-
-
     c = k_means_clustering(data,3)
 
     print c[0]
